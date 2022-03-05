@@ -1,0 +1,97 @@
+.contacts.search-active {
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.contacts .contacts-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.contacts .contacts-title {
+    font-weight: 700;
+}
+
+.contacts .contacts-desc {
+    color: #696969;
+    font-weight: 500;
+}
+
+.contacts.search-active .contacts-desc {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.contacts .search-box {
+    position: absolute;  
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    height: 82px;
+    width: 750px;
+    border-radius: 10px;
+    display: none;
+}
+
+.contacts .search-box .search-input {
+    position: absolute;
+    top: 27px;
+    left: 30px;
+    font-weight: 700;
+    width: 40.3rem;
+    border: none;
+}
+
+.contacts .search-box .search-input:focus-within {
+    outline: none;
+}
+
+.contacts .search-box .search-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #000;
+    font-size: 20px;
+}
+
+.contacts .search-result {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #000;
+    width: 750px;
+    border-radius: 10px;
+    padding: 30px 30px;
+    display: none;
+}
+
+.contacts .search-result .actions-details {
+    margin-top: 15px;
+}
+
+.contacts .search-result .search-result-title {
+    font-size: 14.5px;
+    font-weight: 500;
+}
+
+.contacts .search-result .search-result-desc {
+    color: #000;
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.contacts .search-result .search-result-desc:hover {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.contacts.search-active .search-box, .contacts.search-active .search-result {
+    display: block;
+}
