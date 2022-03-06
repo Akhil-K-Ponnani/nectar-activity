@@ -12,8 +12,8 @@ function App() {
         <Route path='/' element={<Contacts />} />
         <Route path='/users' element={<Users />} />
         <Route path='/add-user' element={<UpdateUsers addUser />} />
-        <Route path='/edit-user' element={<UpdateUsers editUser />} />
-        <Route path='/view-user' element={<ViewUsers />} />
+        <Route path='/edit-user/:id' element={<UpdateUsers editUser />} />
+        <Route path='/view-user/:id' element={<ViewUsers />} />
       </Routes>
     </div>
   );

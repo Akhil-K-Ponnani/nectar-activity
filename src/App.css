@@ -3,6 +3,8 @@
   padding: 0;
 }
 
+
+/* --Modal-- */
 .modal .modal-content {
   margin: auto;
   padding: 0.7em;
@@ -18,6 +20,7 @@
   cursor: pointer;
 }
 
+/* --Submit Button-- */
 .submit-btn {
   background: #232b2b;
   color: #fff;
@@ -31,8 +34,21 @@
   box-shadow: none;
 }
 
+/* --Form-- */
 .form-group input:focus {
   box-shadow: none;
   border: 1px solid #B0B0B0;
   outline: none;
+}
+
+.form-group .submit-err {
+  color: #D8000C;
+  font-size: small;
+}
+
+/* Limit line length */
+.limit-line-length {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

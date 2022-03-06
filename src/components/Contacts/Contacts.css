@@ -1,3 +1,4 @@
+/* --Contents Search Page-- */
 .contacts.search-active {
     height: 100vh;
     background: rgba(0, 0, 0, 0.2);
@@ -88,8 +89,16 @@
     text-decoration: none;
 }
 
+.contacts .search-result .search-result-desc.select-content {
+    color: rgba(0, 0, 0, 0.6);
+}
+
 .contacts .search-result .search-result-desc:hover {
     color: rgba(0, 0, 0, 0.6);
+}
+
+.contacts .search-result .search-result-desc.no-user:hover {
+    color: #000;
 }
 
 .contacts.search-active .search-box, .contacts.search-active .search-result {
