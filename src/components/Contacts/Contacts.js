@@ -10,7 +10,7 @@ function Contacts() {
   const [selectedContent, setSelectedContent] = useState(-1)
   document.addEventListener("keyup", (e) => {
     e.preventDefault()
-    if (e.ctrlKey && e.key.toLowerCase() === "q")
+    if (e.ctrlKey && e.key.toLowerCase() === "b")
       setIsSearch(!isSearch)
     if (e.key === "ArrowUp" && selectedContent > 0)
       setSelectedContent(selectedContent - 1)
@@ -55,7 +55,7 @@ function Contacts() {
     <div className={`contacts${isSearch ? ' search-active' : ''}`}>
       <div className="contacts-main">
         <h1 className='contacts-title'>Contacts</h1>
-        <div className='contacts-desc'>Press Ctrl + Q to activate Command Palette</div>
+        <div className='contacts-desc'>Press Ctrl + B to activate Command Palette</div>
       </div>
       <div className="search-box" id="search-box">
         <input type="text" name="search" value={searchKey} className='search-input' id="search-input" placeholder='Start by Typing' onChange={(e) => handleSearch(e.target.value)} />
