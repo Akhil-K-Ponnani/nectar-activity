@@ -1,6 +1,6 @@
 /* --Users List Page-- */
 .users-list {
-    margin-top: 20px;
+    padding-top: 20px;
     font-weight: 700;
 }
 
@@ -23,6 +23,10 @@
     transition: all 0.3s ease-in-out;
 }
 
+.users-list.search-active .add-user-btn {
+    background: rgba(0, 0, 0, 0.5);
+}
+
 .users-list .add-user-btn:hover {
     background: #000;
 }
@@ -34,6 +38,10 @@
     height: 80px;
     border-radius: 10px;
     margin-bottom: 15px;
+}
+
+.users-list.search-active .user-card {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .users-list .user-card .user-name {

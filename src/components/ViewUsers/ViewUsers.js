@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import Search from '../Search/Search';
 import './ViewUsers.css';
 
-function ViewUsers(props) {
+function ViewUsers() {
    const { id } = useParams()
    const [userKey, setUserKey] = useState()
    const [name, setName] = useState()
    const [department, setDepartment] = useState()
    const [specialization, setSpecialization] = useState()
    const [position, setPosition] = useState()
+   const [isSearch, setIsSearch] = useState(false)
    useEffect(() => {
       let users = JSON.parse(localStorage.getItem('users'))
       let user = users.find(user => user.id === id)
@@ -20,8 +22,14 @@ function ViewUsers(props) {
          setPosition(user.position)
       }
    }, [id])
+   document.addEventListener("keyup", (e) => {
+      e.preventDefault()
+      if (e.ctrlKey && e.key.toLowerCase() === "b")
+         setIsSearch(!isSearch)
+   })
    return (
-      <div className="view-users container">
+      <div className={`view-users${isSearch ? ' search-active' : ''}`}>
+      <div className="container">
          <div className="row">
             <div className="col-md-6">
                <h3 className='view-user-title'>View User</h3>
@@ -46,6 +54,8 @@ function ViewUsers(props) {
                <Link to={`/edit-user/${userKey}`} className="btn submit-btn">Edit User</Link>
             </div>
          </div>
+      </div>
+      {isSearch && <Search isSearch={isSearch} setIsSearch={setIsSearch} />}
       </div>
    )
 }

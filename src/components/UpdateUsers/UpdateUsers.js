@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
+import Search from '../Search/Search';
 import './UpdateUsers.css';
 
 function UpdateUsers(props) {
@@ -14,6 +15,7 @@ function UpdateUsers(props) {
    const [departmentErr, setDepartmentErr] = useState('')
    const [specializationErr, setSpecializationErr] = useState('')
    const [positionErr, setPositionErr] = useState('')
+   const [isSearch, setIsSearch] = useState(false)
    let userId = id
    useEffect(() => {
       if (id) {
@@ -28,6 +30,11 @@ function UpdateUsers(props) {
          }
       }
    }, [id])
+   document.addEventListener("keyup", (e) => {
+      e.preventDefault()
+      if (e.ctrlKey && e.key.toLowerCase() === "b")
+         setIsSearch(!isSearch)
+   })
    function handleSubmit() {
       if (name.length > 0)
          if (department.length > 0)
@@ -76,35 +83,38 @@ function UpdateUsers(props) {
          setNameErr("Enter user Name")
    }
    return (
-      <div className="update-users container">
-         {(props.addUser || userKey) && <div className="row">
-            <div className="col-md-6">
-               <h3 className='update-user-title'>{props.addUser ? 'Add User' : 'Edit User'}</h3>
-               <div className="row">
-                  <div className="form-group col-md-8">
-                     <label htmlFor='name'>Name</label>
-                     <input type="text" name="name" value={name} className="form-control" id='name' onChange={(e) => setName(e.target.value)} />
-                     <div className='submit-err'>{nameErr}</div>
+      <div className={`update-users${isSearch ? ' search-active' : ''}`}>
+         <div className="container">
+            {(props.addUser || userKey) && <div className="row">
+               <div className="col-md-6">
+                  <h3 className='update-user-title'>{props.addUser ? 'Add User' : 'Edit User'}</h3>
+                  <div className="row">
+                     <div className="form-group col-md-8">
+                        <label htmlFor='name'>Name</label>
+                        <input type="text" name="name" value={name} className="form-control" id='name' onChange={(e) => setName(e.target.value)} />
+                        <div className='submit-err'>{nameErr}</div>
+                     </div>
+                     <div className="form-group col-md-8">
+                        <label htmlFor='department'>Department</label>
+                        <input type="text" name="department" value={department} className="form-control" id='department' required onChange={(e) => setDepartment(e.target.value)} />
+                        <div className='submit-err'>{departmentErr}</div>
+                     </div>
+                     <div className="form-group col-md-8">
+                        <label htmlFor='specialization'>Specialization</label>
+                        <input type="text" name="specialization" value={specialization} className="form-control" id='specialization' required onChange={(e) => setSpecialization(e.target.value)} />
+                        <div className='submit-err'>{specializationErr}</div>
+                     </div>
+                     <div className="form-group col-md-8">
+                        <label htmlFor='position'>Current Position</label>
+                        <input type="text" name="position" value={position} className="form-control" id='position' required onChange={(e) => setPosition(e.target.value)} />
+                        <div className='submit-err'>{positionErr}</div>
+                     </div>
                   </div>
-                  <div className="form-group col-md-8">
-                     <label htmlFor='department'>Department</label>
-                     <input type="text" name="department" value={department} className="form-control" id='department' required onChange={(e) => setDepartment(e.target.value)} />
-                     <div className='submit-err'>{departmentErr}</div>
-                  </div>
-                  <div className="form-group col-md-8">
-                     <label htmlFor='specialization'>Specialization</label>
-                     <input type="text" name="specialization" value={specialization} className="form-control" id='specialization' required onChange={(e) => setSpecialization(e.target.value)} />
-                     <div className='submit-err'>{specializationErr}</div>
-                  </div>
-                  <div className="form-group col-md-8">
-                     <label htmlFor='position'>Current Position</label>
-                     <input type="text" name="position" value={position} className="form-control" id='position' required onChange={(e) => setPosition(e.target.value)} />
-                     <div className='submit-err'>{positionErr}</div>
-                  </div>
+                  <button type="submit" className="btn submit-btn" onClick={handleSubmit}>Submit</button>
                </div>
-               <button type="submit" className="btn submit-btn" onClick={handleSubmit}>Submit</button>
-            </div>
-         </div>}
+            </div>}
+         </div>
+         {isSearch && <Search isSearch={isSearch} setIsSearch={setIsSearch} />}
       </div>
    )
 }
