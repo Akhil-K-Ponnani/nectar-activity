@@ -7,17 +7,17 @@ function Users() {
     const navigate = useNavigate()
     const [users, setUsers] = useState([])
     const [toDeleteUserId, setToDeleteUserId] = useState('')
-    const [isSearch, setIsSearch] = useState(false)
+    /*const [isSearch, setIsSearch] = useState(false)*/
     useEffect(() => {
         let localUsers = JSON.parse(window.localStorage.getItem('users'))
         if (localUsers)
             setUsers(localUsers)
     }, [])
-    document.addEventListener("keyup", (e) => {
+    /*document.addEventListener("keyup", (e) => {
         e.preventDefault()
         if (e.ctrlKey && e.key.toLowerCase() === "b")
             setIsSearch(!isSearch)
-    })
+    })*/
     function deleteUser() {
         let localUsers = JSON.parse(window.localStorage.getItem('users'))
         let userIndex = localUsers.findIndex(localUser => toDeleteUserId === localUser.id)
@@ -28,7 +28,7 @@ function Users() {
         navigate('/users')
     }
     return (
-        <div className={`users-list${isSearch ? ' search-active' : ''}`}>
+        <div className={`users-list`}>
         <div className='container'>
             <div style={{ marginBottom: '32px' }}>
                 <span className='users-count'>{users.length} Users</span>
@@ -43,22 +43,22 @@ function Users() {
                     </div>
                 )
             }
-            <div class="modal fade" id="delete-user" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
+            <div className="modal fade" id="delete-user" tabIndex="-1" role="dialog" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
                             <h5>Delete User</h5>
-                            <div class="close-btn" data-dismiss="modal"><i class="fal fa-times"></i></div>
+                            <div className="close-btn" data-dismiss="modal"><i className="fal fa-times"></i></div>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <div style={{ fontWeight: '500' }}>Do you want to Delete the User?</div>
-                            <button class="btn float-right submit-btn" id="delete-btn" data-dismiss="modal" onClick={deleteUser}>Delete</button>
+                            <button className="btn float-right submit-btn" id="delete-btn" data-dismiss="modal" onClick={deleteUser}>Delete</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {isSearch && <Search isSearch={isSearch} setIsSearch={setIsSearch} />}
+        {/* {isSearch && <Search isSearch={isSearch} setIsSearch={setIsSearch} />} */}
         </div>
     )
 }

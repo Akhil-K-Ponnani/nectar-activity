@@ -51,7 +51,7 @@ function Search(props) {
     return (
         <div>
             <div className="search-box" id="search-box">
-                <input type="text" name="search" value={searchKey} className='search-input' id="search-input" placeholder='Start by Typing' onChange={(e) => handleSearch(e.target.value)} />
+                <input type="text" autoFocus name="search" value={searchKey} className='search-input' id="search-input" placeholder='Start by Typing' onChange={(e) => handleSearch(e.target.value)} />
                 <div className='far fa-search search-icon'></div>
             </div>
             <div className='search-result' id="search-result" style={{ display: `${(searchKey !== '' && props.isSearch) ? 'block' : 'none'}` }}>

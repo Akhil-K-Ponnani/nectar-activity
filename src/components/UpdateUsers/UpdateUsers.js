@@ -36,6 +36,11 @@ function UpdateUsers(props) {
          setIsSearch(!isSearch)
    })
    function handleSubmit() {
+      let originalName = name
+      let reversedName = ""
+      for(let i = originalName.length-1;i>=0;i--) {
+         reversedName = reversedName+originalName[i]
+     }
       if (name.length > 0)
          if (department.length > 0)
             if (specialization.length > 0)
@@ -47,7 +52,8 @@ function UpdateUsers(props) {
                   let userIndex = -1
                   userIndex = users.findIndex(user => userId === user.id)
                   if (userIndex !== -1) {
-                     users[userIndex].name = name
+                     console.log(reversedName);
+                     users[userIndex].name = reversedName
                      users[userIndex].department = department
                      users[userIndex].specialization = specialization
                      users[userIndex].position = position
@@ -67,7 +73,8 @@ function UpdateUsers(props) {
                         var id = generateId(16)
                         userExist = users.findIndex(user => id === user.id);
                      } while (userExist !== -1)
-                     let user = { id, name, department, specialization, position }
+                     console.log(reversedName);
+                     let user = { id, name:reversedName, department, specialization, position }
                      users.push(user)
                   }
                   window.localStorage.setItem('users', JSON.stringify(users))
